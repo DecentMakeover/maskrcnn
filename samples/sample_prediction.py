@@ -76,9 +76,14 @@ file_names = next(os.walk(IMAGE_DIR))[2]
 image = skimage.io.imread(os.path.join(IMAGE_DIR, random.choice(file_names)))
 
 # Run detection
+import time
+start = time.time()
 results = model.detect([image], verbose=1)
+end = time.time() - start
+
+print('TIME TAKEN ', end)
 
 # Visualize results
-r = results[0]
-visualize.display_instances(image, r['rois'], r['masks'], r['class_ids'], 
-                            class_names, r['scores'])
+# r = results[0]
+# visualize.display_instances(image, r['rois'], r['masks'], r['class_ids'], 
+#                             class_names, r['scores'])
